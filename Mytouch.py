@@ -23,4 +23,6 @@ if len(newfile.split('.')) == 2:
         temp = open(newfile, 'w')
         temp.close()
         print '\tcreated ', newfile
+else:
+    print 'filename error...'
 
