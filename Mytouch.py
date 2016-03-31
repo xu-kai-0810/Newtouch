@@ -18,7 +18,8 @@ if len(newfile.split('.')) == 2:
         print '\tadding header msg...'
         f.write(header_msg[newfile_type])
         f.close()
-        print '\tcreated ', newfile
+        msg = '\tcreated ', newfile
+        print msg.center(30, '*')
     else:
         temp = open(newfile, 'w')
         temp.close()
