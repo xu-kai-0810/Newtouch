@@ -4,6 +4,8 @@ import os
 import argparse
 
 print 'current dir ====> ', os.getcwd()
+print '*' * 40
+
 parser = argparse.ArgumentParser(description='A script for add script header message')
 parser.add_argument('newfile')
 
