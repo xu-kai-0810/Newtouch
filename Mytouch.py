@@ -1,29 +1,34 @@
 #!/usr/bin/env python
 #coding=utf-8
 import os
-from sys import argv
+import argparse
+
 print 'current dir ====> ', os.getcwd()
-script, newfile = argv
+parser = argparse.ArgumentParser(description='A script for add script header message')
+parser.add_argument('newfile')
+
+args = parser.parse_args()
+
 header_msg = {
             'py': '#!/usr/bin/env python\n#coding=utf-8\n',
             'c': '#include<stdio.h>\n'
             }
 
-if len(newfile.split('.')) == 2:
-    newfile_type = newfile.split('.')[-1]
-    if os.path.exists(os.getcwd()+'/'+newfile):
+if len(args.newfile.split('.')) == 2:
+    newfile_type = args.newfile.split('.')[-1]
+    if os.path.exists(os.getcwd()+'/'+args.newfile):
         print '\tfile already exists...'
     elif newfile_type in header_msg:
-        f = open(newfile, 'w')
+        f = open(args.newfile, 'w')
         print '\tadding header msg...'
         f.write(header_msg[newfile_type])
         f.close()
-        msg = 'created %s' % newfile
+        msg = 'created %s' % args.newfile
         print msg.center(40, '*')
     else:
-        temp = open(newfile, 'w')
+        temp = open(args.newfile, 'w')
         temp.close()
-        print '\tcreated ', newfile
+        print '\tcreated ', args.newfile
 else:
     print 'filename error...'
 
